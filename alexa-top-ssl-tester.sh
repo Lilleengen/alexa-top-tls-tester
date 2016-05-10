@@ -10,6 +10,7 @@ POO=0
 FRK=0
 DRW=0
 COUNT=0
+COUNTT=0
 IFS=,
 [ ! -f $INPUT ] && { echo "$INPUT file not found"; exit 99; }
 while read name website
@@ -38,6 +39,8 @@ do
         fi
         COUNT=$((COUNT+1))
     fi
-    echo -en "\r{$HB (hearthbleed), $LNT (lucky -20), $POO (poodle), $FRK (freek), $DRW (drown)}/$COUNT ($DOMAIN)\033[K"
+    COUNTT=$((COUNTT+1))
+    echo -en "\r{$HB (hearthbleed), $LNT (lucky -20), $POO (poodle), $FRK (freek), $DRW (drown)}/$COUNT ($((COUNTT/5))%, $DOMAIN)\033[K"
 done < $INPUT
 IFS=$OLDIFS
+echo -en "\r{$HB (hearthbleed), $LNT (lucky -20), $POO (poodle), $FRK (freek), $DRW (drown)}/$COUNT\n\033[K"
