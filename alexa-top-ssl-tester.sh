@@ -1,5 +1,6 @@
+echo "Downloading alexa toplist to websites.csv"
 python alexa-scraper.py $1 > /dev/null 2>&1
-dos2unix websites.csv
+dos2unix websites.csv > /dev/null 2>&1
 
 INPUT=websites.csv
 OLDIFS=$IFS
@@ -7,6 +8,7 @@ HB=0
 LNT=0
 POO=0
 FRK=0
+DRW=0
 COUNT=0
 IFS=,
 [ ! -f $INPUT ] && { echo "$INPUT file not found"; exit 99; }
@@ -26,12 +28,16 @@ do
         if [[ $? == 1 ]]; then
             POO=$((POO+1))
         fi
-        /usr/local/ssl/bin/openssl s_client -connect akamai.com:443 -cipher EXPORT > /dev/null 2>&1
-        if [[ $? < 1 ]]; then
+        timeout 10 /usr/local/ssl/bin/openssl s_client -connect $DOMAIN:443 -cipher EXPORT 2>&1 >/dev/null | grep -q "error"
+        if [[ $? == 1 ]]; then
             FRK=$((FRK+1))
+        fi
+        ./DROWNcheck.sh $DOMAIN > /dev/null 2>&1
+        if [[ $? == 1 ]]; then
+            DRW=$((DRW+1))
         fi
         COUNT=$((COUNT+1))
     fi
-    echo "{$HB, $LNT, $POO, $FRK}/$COUNT ($DOMAIN)"
+    echo -en "\r{$HB (hearthbleed), $LNT (lucky -20), $POO (poodle), $FRK (freek), $DRW (drown)}/$COUNT ($DOMAIN)\033[K"
 done < $INPUT
 IFS=$OLDIFS

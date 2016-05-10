@@ -6,7 +6,7 @@ cbc_ciphers="SRP-DSS-AES-256-CBC-SHA:SRP-RSA-AES-256-CBC-SHA:SRP-AES-256-CBC-SHA
 cbc_ciphers_krb="KRB5-IDEA-CBC-SHA:KRB5-IDEA-CBC-MD5:KRB5-DES-CBC3-SHA:KRB5-DES-CBC3-MD5:KRB5-DES-CBC-SHA:KRB5-DES-CBC-MD5:EXP-KRB5-RC2-CBC-SHA:EXP-KRB5-DES-CBC-SHA:EXP-KRB5-RC2-CBC-MD5:EXP-KRB5-DES-CBC-MD5"
 
 cbc_ciphers=$(openssl ciphers -v 'ALL:eNULL' 2>"/dev/null" | awk '/CBC/ { print $1 }' | tr '\n' ':')
-openssl s_client -ssl3 -cipher $cbc_ciphers -connect $DOMAIN:443 -servername $DOMAIN  < /dev/null > /dev/null 2>&1
+timeout 10 openssl s_client -ssl3 -cipher $cbc_ciphers -connect $DOMAIN:443 -servername $DOMAIN  < /dev/null > /dev/null 2>&1
 ret=$?
 if [[ $ret -eq 0 ]]; then
 	exit 1
