@@ -5,7 +5,10 @@ import requests
 import csv
 import sys
 
-alexa = 'http://www.alexa.com/topsites/countries;{}/'+sys.argv[1]
+if len(sys.argv) is not 1:
+    alexa = 'http://www.alexa.com/topsites/countries;{}/'+sys.argv[1]
+else:
+    alexa = 'http://www.alexa.com/topsites/global;{}/'
 base = 'http://www.alexa.com'
 
 def getSites():

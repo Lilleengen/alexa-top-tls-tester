@@ -1,5 +1,6 @@
 echo "Downloading alexa toplist to websites.csv"
-python alexa-scraper.py $1 > /dev/null 2>&1
+python scrape-alexa.py $1 > /dev/null 2>&1
+
 dos2unix websites.csv > /dev/null 2>&1
 
 INPUT=websites.csv
@@ -40,7 +41,7 @@ do
         COUNT=$((COUNT+1))
     fi
     COUNTT=$((COUNTT+1))
-    echo -en "\r{$HB (hearthbleed), $LNT (lucky -20), $POO (poodle), $FRK (freek), $DRW (drown)}/$COUNT ($((COUNTT/5))%, $DOMAIN)\033[K"
+    echo -en "\r{$HB (hearthbleed), $LNT (lucky -20), $POO (poodle), $FRK (freak), $DRW (drown)}/$COUNT ($((COUNTT/5))%, $DOMAIN)\033[K"
 done < $INPUT
 IFS=$OLDIFS
-echo -en "\r{$HB (hearthbleed), $LNT (lucky -20), $POO (poodle), $FRK (freek), $DRW (drown)}/$COUNT\n\033[K"
+echo -en "\r{$HB (hearthbleed), $LNT (lucky -20), $POO (poodle), $FRK (freak), $DRW (drown)}/$COUNT\n\033[K"
