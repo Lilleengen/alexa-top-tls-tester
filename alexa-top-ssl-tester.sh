@@ -34,7 +34,7 @@ do
         if [[ $? == 1 ]]; then
             FRK=$((FRK+1))
         fi
-        ./DROWNcheck.sh $DOMAIN > /dev/null 2>&1
+        ./test-drown.sh $DOMAIN > /dev/null 2>&1
         if [[ $? == 1 ]]; then
             DRW=$((DRW+1))
         fi
