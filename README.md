@@ -3,7 +3,7 @@ alexa-top-tls-tester
 Tests the TLS implementation of the top 500 sites on Alexa
 
 ```
-$ ./alexa-top-tls-tester.sh [ISO-3166-2-alpha]
+$ ./alexa-top-tls-tester.sh NO
  {0 (hearthbleed), 65 (lucky -20), 32 (poodle), 19 (freak), 3 (drown)}/321
 $
 
