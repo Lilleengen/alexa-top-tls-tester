@@ -23,7 +23,7 @@ do
             HB=$((HB+1))
         fi
         CVE-2016-2107 $DOMAIN > /dev/null 2>&1
-        if [[ $? == 1  ]] ; then
+        if [[ $? == 2  ]] ; then
             LNT=$((LNT+1))
         fi
         ./test-poodle.sh $DOMAIN

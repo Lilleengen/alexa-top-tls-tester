@@ -15,8 +15,6 @@ Install the following project before using:
  - [FiloSottile/Heartbleed](https://github.com/FiloSottile/Heartbleed)
  - [FiloSottile/CVE-2016-2107](https://github.com/FiloSottile/CVE-2016-2107)
 
-Modify CVE-2016-2107 to return 2 instead of 1 on error.
-
 ## Version 
 * Version 0.1
 
