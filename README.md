@@ -19,6 +19,5 @@ Install the following project before using:
 * Version 0.1
 
 ## Contact
-#### Henrik Lilleengen
+#### [Henrik Lilleengen](https://ithenrik.com/)
 * e-mail: mail@ithenrik.com
-* website: [ithenrik.com](https://ithenrik.com/)
